@@ -4,14 +4,14 @@
 React frontend and a Laravel backend communicating via a RESTful API.
 
 
-## 🚀 Project Overview
+## Project Overview
 
 On the React side, it follows a standard secure pattern: a short-lived access token is managed in state, while the long-lived refresh token is stored in an HttpOnly cookie.
 
 On the Laravel backend, I moved away from the conventional Sanctum session-based auth. Instead, I used a manual refresh token mechanism. This approach validates the token from the cookie directly against the personal_access_token database, keeping the API routes sessionless.
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Backend (API & Database):**
 * **Framework:** Laravel (PHP)
@@ -24,7 +24,7 @@ On the Laravel backend, I moved away from the conventional Sanctum session-based
 * **Routing:** `react-router-dom`
 * **HTTP Client:** Axios (using a custom `useAxiosPrivate` hook for authenticated requests)
 
-## 💻 Backend Setup (Laravel)
+## Backend Setup (Laravel)
 
 ### 1. Installation
 
