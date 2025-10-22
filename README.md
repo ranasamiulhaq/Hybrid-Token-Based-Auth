@@ -8,7 +8,7 @@ React frontend and a Laravel backend communicating via a RESTful API.
 
 On the React side, it follows a standard secure pattern: a short-lived access token is managed in state, while the long-lived refresh token is stored in an HttpOnly cookie.
 
-On the Laravel backend, I moved away from the conventional Sanctum session-based auth. Instead, I used a manual refresh token mechanism. This approach validates the token from the cookie directly against the personal_access_token database, keeping the API routes sessionless.
+On the Laravel backend, I moved away from the conventional Sanctum session-based auth. Instead, I used a manual refresh token mechanism. This approach validates the tokens from the cookie directly against the personal_access_token database, keeping the API routes sessionless.
 
 
 ## Tech Stack
