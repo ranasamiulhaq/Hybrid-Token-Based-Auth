@@ -1,25 +1,24 @@
-# Social Media Dashboard
+# Hybrid Token Based Authentication
 
-This project is a full-stack social media application featuring a Laravel API backend and a React dashboard frontend.
+ The system is designed for modern Single Page Application (SPA) architecture, with a
+React frontend and a Laravel backend communicating via a RESTful API.
+
 
 ## 🚀 Project Overview
 
-The application allows users to:
-* Authenticate via API tokens (assumed to be handled by the backend).
-* View a personalized feed (`/feed`).
-* Create new posts (`/post`), which instantly update the feed.
-* Explore and manage follow relationships with other users (`/users`, `/follow/{user}`, `/unfollow/{user}`).
-* View follower and following counts in real-time.
+On the React side, it follows a standard secure pattern: a short-lived access token is managed in state, while the long-lived refresh token is stored in an HttpOnly cookie.
+
+On the Laravel backend, I moved away from the conventional Sanctum session-based auth. Instead, I used a manual refresh token mechanism. This approach validates the token from the cookie directly against the personal_access_token database, keeping the API routes sessionless.
+
 
 ## 🛠️ Tech Stack
 
 **Backend (API & Database):**
 * **Framework:** Laravel (PHP)
-* **Database:** (Assumed MySQL/PostgreSQL/SQLite)
-* **Authentication:** Laravel Sanctum (or similar API token solution)
+* **Database:** (MySQL)
 
 **Frontend (Client):**
-* **Framework:** React
+* **Framework:** Vite + React
 * **Styling:** Tailwind CSS (used via utility classes)
 * **State Management:** Redux (via `react-redux`)
 * **Routing:** `react-router-dom`
@@ -39,15 +38,17 @@ The application allows users to:
 		cp .env.example .env
 		php artisan key:generate
    ```
+4. Run the mirgrations:
+   ```bash
+		php artisan migrate
+   ```
 
-### 1. Database and Seeding
-The project includes custom Factories and Seeders to populate the database with realistic fake data for testing the feed and follow functionality.
-To set up the database and seed it, run the following command. Warning: This command will drop all existing tables and data.
+### 2. Run
 
-```bash
-php artisan migrate:fresh --seed
-```
-
+1. Run the project by php command.
+   ```bash
+      php artisan serve
+   ```
 
 	 
 ## Frontend Setup (React):
@@ -57,10 +58,17 @@ The frontend is a React application typically served by a development server.
 
 1. Navigate into the frontend project directory (e.g., cd frontend).
 2. Install JavaScript dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+   ```bash
+   npm install
+   ```
 
+### 2. Run
+
+1. Run the project by npm command.
+   ```bash
+      npm run dev
+   ```
+
+
+## For More Deatils : Read the document Database_Token_Approach.pdf 
 
